@@ -11,3 +11,5 @@ export const SearchInput = ({searchValue, handleChange}) => {
         />
     );
 };
+
+
