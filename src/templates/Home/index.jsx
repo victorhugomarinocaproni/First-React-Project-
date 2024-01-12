@@ -8,7 +8,7 @@ import { Button } from '../../components/Button';
 import { SearchInput } from '../../components/SearchInput';
 
 export class Home extends Component {
-  state = {
+  state =  {
     posts: [],
     allPosts: [],
     page: 0,
@@ -24,7 +24,7 @@ export class Home extends Component {
     const { page, postsPerPage } = this.state;
 
     const postsAndPhotos = await loadPosts();
-    this.setState({ 
+    this.setState({
       posts: postsAndPhotos.slice(page, postsPerPage),
       allPosts: postsAndPhotos,
     });
@@ -32,7 +32,7 @@ export class Home extends Component {
 
   loadMorePosts = () => {
     const {
-      page, 
+      page,
       postsPerPage,
       allPosts,
       posts
@@ -58,8 +58,8 @@ export class Home extends Component {
     allPosts.filter(post => {
       return post.title.toLowerCase().includes(searchValue.toLowerCase());
     })
-    : 
-    posts; 
+    :
+    posts;
 
     return (
       <section className='container'>
@@ -67,7 +67,7 @@ export class Home extends Component {
         <div className='search-container'>
           {!!searchValue && (
             <h1>Search Value: {searchValue}</h1>
-          )} 
+          )}
 
           <SearchInput handleChange={this.handleChange} />
         </div>
@@ -76,14 +76,14 @@ export class Home extends Component {
           <Posts posts={filteredPosts} />
         )}
 
-        {filteredPosts.length === 0 && (  
+        {filteredPosts.length === 0 && (
           <p>There is no post with this Title</p>
         )}
-        
 
-        <div className='button-container'> 
+
+        <div className='button-container'>
           {!searchValue && (
-            <Button 
+            <Button
               text={'Load More Posts'}
               onclick={this.loadMorePosts}
               disabled={noMorePosts}
@@ -99,7 +99,7 @@ export class Home extends Component {
 /*
 Assim, podemos utilizar esse esquema para aplicar um lógica booleana:
 
-{!!searchValue && (     
+{!!searchValue && (
   coisa_a_ser_executada
 )}
 Basicamente, se TIVER algo na busca ele executa, senão, não.
